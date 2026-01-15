@@ -24,8 +24,8 @@ const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.error('Error: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are required.');
-    process.exit(1);
+    console.warn('⚠️ Warning: VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY is missing. Skipping static sitemap generation.');
+    process.exit(0); // Exit successfully so the build can continue
 }
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
